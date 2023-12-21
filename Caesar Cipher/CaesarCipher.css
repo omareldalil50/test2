@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Muli", sans-serif;
+    color: #fff;
+  }
+  
+  #container {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #container h3 span {
+    color: #fff;
+  }
+  
+  h1 {
+    color: white; /* Fallback */
+    /*Photo by Freepik on Freepik - https://www.freepik.com/free-vector/abstract-futuristic-wallpaper_6413324.htm*/
+    background: url(https://image.freepik.com/free-vector/abstract-futuristic-wallpaper_23-2148398113.jpg)
+      repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-family: "Archivo Black", "Arial Black", sans-serif;
+    font-size: 8vw;
+  }
+  
+  h3 {
+    color: lightsteelblue;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0px 0px 20px;
+    padding: 0px 50px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .panel {
+    background-image: linear-gradient(#141e30, #243b55);
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    margin: 15px;
+  }
+  
+  .panel input,
+  .panel button {
+    border: none;
+    border-radius: 3px;
+    display: block;
+    font-size: 16px;
+    padding: 8px 10px;
+    margin: 15px 0;
+    width: 100%;
+  }
+  
+  .panel select {
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 8px 10px;
+    margin: 15px 0;
+    width: 100%;
+  }
+  
+  .panel .btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin-left: 15px;
+    width: 100%;
+  }
+  
+  .panel button {
+    background-image: linear-gradient(to bottom right, #141e30, #243b55);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 600px) {
+    h3 {
+      font-size: 14px;
+      margin: 15px 0px 0px;
+    }
+  }
+  

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2575fc" >
+    <!-- Bibliotecas CSS -->
+    <link rel="icon" type="image/png" href="/Playfair/favicon.png"/> <!-- Remove /PlayfairCypher to inspect locally -->
+    <link rel="stylesheet" href="/Playfair/css/animate.min.css"/>
+    <link rel="stylesheet" href="/Playfair/css/style.css"/>
+    <!-- Bibliotecas JS -->
+    <script src="https://kit.fontawesome.com/82445024cd.js" crossorigin="anonymous" defer></script>
+    <script src="/Playfair/js/script.js" defer></script>
+    <title>Playfair</title>
+</head>
+<body>
+    <div id="container-alerta"></div>
+    <header>
+        <h1 class="animate__animated animate__fadeInDown animate__slower" style="color:#241468">Playfair</h1>
+    </header>
+    <main class="animate__animated animate__fadeInUp animate__slow">
+        <nav class="container-btn">
+            <button id="encriptar">Encrypt</button>
+            <button id="desencriptar" class="deactive">Decrypt</button>
+            <button id="funcionamento" class="deactive">About</button>
+        </nav>
+        <section id="sectionLogica" class="">
+            <div class="container-chave">
+                <input id="input" type="text" placeholder="Chave da cifra">
+                <button id="btn-Definir">Definir</button>
+            </div>
+            <h4>Tabela da Cifra</h4>
+            <table>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <section id="sectionEncriptar" class="">
+                <h4 id="h4-1">Texto para Encriptar</h4>
+                <div class="container-textarea">
+                    <textarea id="textarea1" type="text" placeholder="Aumentar arrastando para baixo↘"></textarea>
+                    <button id="btn-run1"><i class="fa-solid fa-play"></i></button>
+                </div>
+                <h4 id="h4-2">Texto Encriptado</h4>
+                <div class="container-textarea">
+                    <textarea id="textarea2" type="text" placeholder="Aumentar arrastando para baixo↘" readonly></textarea>
+                    <button id="btn-copy1"><i class="fa-solid fa-copy"></i></i></button>
+                </div>
+            </section>
+            <section id="sectionDesencriptar" class="hide">
+                <h4 id="h4-1">Texto Encriptado</h4>
+                <div class="container-textarea">
+                    <textarea id="textarea3" type="text" placeholder="Aumentar arrastando para baixo↘"></textarea>
+                    <button id="btn-run2"><i class="fa-solid fa-play"></i></button>
+                </div>
+                <h4 id="h4-2">Texto Desencriptado</h4>
+                <div class="container-textarea">
+                    <textarea id="textarea4" type="text" placeholder="Aumentar arrastando para baixo↘" readonly></textarea>
+                    <button id="btn-copy2"><i class="fa-solid fa-copy"></i></i></button>
+                </div>
+            </section>
+            <button id="btn-clear"><i style="margin-right: 1rem;" class="fa-solid fa-trash"></i>Limpar</button>
+        </section>
+        <section id="sectionFuncionamento" class="hide">
+            <h3>Como funciona a Cifra de Playfair</h3>
+            <div class="containerTexto">
+                <h4 style="margin: 0;">1º Passo</h4>
+                <p>Escolher uma chave da cifra.</p>
+                <h5>Regras</h5>
+                <ul>
+                    <li>A chave deve conter apenas letras de A-Z.</li>
+                    <li>A chave não pode conter letras repetidas.</li>
+                </ul>
+                <hr>
+                <h4>2º Passo</h4>
+                <p>Criar a tabela da cifra.</p>
+                <h5>Regras</h5>
+                <ul>
+                    <li>Remover a letra J.</li>
+                    <li>Inserir a chave da cifra na tabela.</li>
+                    <li>Completar o resto da tabela com as letras restantes do alfabeto.</li>
+                </ul>
+                <hr>
+                <h4>3º Passo</h4>
+                <p>Escrever o texto para encriptar.</p>
+                <h5>Regras</h5>
+                <ul>
+                    <li>Remover os espaços.</li>
+                    <li>Substituir a letra J pela letra I.</li>
+                    <li>Dividir as letras em pares.</li>
+                    <li>Separar as letras duplicadas inserindo a letra X.</li>
+                    <li>Se o número de letras for ímpar inserir um X no final do texto.</li>
+                </ul>
+                <hr>
+                <h4>4º Passo</h4>
+                <p>Encriptar o texto.</p>
+                <h5>Regras</h5>
+                <ul>
+                    <li>Se o par de letras estiver na mesma coluna:</li>
+                    <ul>
+                        <li>Descer 1 na tabela da cifra cada letra.</li>
+                        <li>Se alguma das letras for a última da coluna ir buscar a 1ª letra da coluna.</li>
+                    </ul>
+                    <li>Se o par de letras estiver na mesma linha:</li>
+                    <ul>
+                        <li>Mover 1 para a direita na tabela da cifra cada letra.</li>
+                        <li>Se alguma das letras for a última da linha ir buscar a 1ª letra da linha.</li>
+                    </ul>
+                    <li>Se as letras estiverem em colunas ou linhas diferentes(formarem um retângulo):</li>
+                    <ul>
+                        <li>Trocar as letras com as dos cantos não preenchidos do retângulo.</li>
+                    </ul>
+                </ul>
+                <hr>
+                <h4>5º Passo</h4>
+                <p>Desencriptar o texto.</p>
+                <h5>Regras</h5>
+                <ul>
+                    <li>Se o par de letras estiver na mesma coluna:</li>
+                    <ul>
+                        <li>Subir 1 na tabela da cifra cada letra.</li>
+                        <li>Se alguma das letras for a 1ª da coluna ir buscar a última letra da coluna.</li>
+                    </ul>
+                    <li>Se o par de letras estiver na mesma linha:</li>
+                    <ul>
+                        <li>Mover 1 para a esquerda na tabela da cifra cada letra.</li>
+                        <li>Se alguma das letras for a 1ª da linha ir buscar a última letra da linha.</li>
+                    </ul>
+                    <li>Se as letras estiverem em colunas ou linhas diferentes(formarem um retângulo):</li>
+                    <ul>
+                        <li>Trocar as letras com as dos cantos não preenchidos do retângulo.</li>
+                    </ul>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

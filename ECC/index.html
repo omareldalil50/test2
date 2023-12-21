@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Elliptic Curves</title>
+        <style media="screen">
+            #holder {
+                width: 2048px;
+                height: 2048px;
+            }
+        </style>
+        <script src="resources/raphael.js"></script>
+        <script src="resources/ecc.js"></script>
+        <script>
+            window.onload = function () {
+                var paper = Raphael("holder", 2048, 2048),
+                    btn = document.getElementById("run"),
+                    cd = document.getElementById("code");
+
+                var a_elem = document.getElementById("a"),
+                    b_elem = document.getElementById("b"),
+                    c_elem = document.getElementById("c");
+
+                (btn.onclick = function () {
+                    paper.clear();
+                    var p = parseInt(cd.value),
+                        a = parseInt(a_elem.value),
+                        b = parseInt(b_elem.value),
+                        c = parseInt(c_elem.value);
+
+                    drawGrid(p, paper);
+
+                    var curve = new Curve(p, a, b, c);
+
+                    var markers = new Array(p);
+                    for(var x = 0; x < p; x++) {
+                        markers[x] = new Array(p);
+                    }
+
+                    for(var x = 0; x < p; x++) {
+                        for(var y = 0; y < p; y++) {
+                            var current = new Point(x, y);
+                            if (isElem(current, curve)) {
+                                markers[x][y] = new Marker(paper, current);
+                                markers[x][y].draw(function(point) {
+                                    if (P1 == null) {
+                                        P1 = point;
+                                        P1_marker = paper.circle(
+                                            xoffset + point.x * grid,
+                                            yoffset + point.y * grid, 5).attr("fill", "#FF0000");
+                                    } else {
+                                        P2 = point;
+                                        P2_marker = paper.circle(xoffset + point.x * grid,
+                                                yoffset + point.y * grid, 5).attr("fill", "#FF0000");
+
+                                        var C = add(P1, P2, curve);
+                                        animateRay(P1, P2, curve, paper);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                })();
+            };
+        </script>
+    </head>
+    <body>
+        <h1> Elliptic Curves</h1>
+        <div>p:<input id="code" type="text" value="17"></input></div>
+        <div>a:<input id="a" type="text" value="1"></input>b:<input id="b" type="text" value="1"></input>c:<input id="c" type="text" value="7"></input></div>
+        <div><button id="run" type="button">Run</button></div>
+        <div>Select two points in order to add them.</div>
+        <div id="holder"></div>
+    </body>
+</html>
