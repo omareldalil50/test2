@@ -20,30 +20,67 @@
         }
 
         nav {
-            display: flex;
-            justify-content: space-between;
             background-color: #EA1179;
             padding: 10px;
+            text-align: center;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 10px;
+            display: block;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
         }
 
         .content {
             padding: 20px;
-            display:inline-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .course-image {
-            max-width: 150%;
+            max-width: 100%;
             height: auto;
             border-radius: 10px;
-            margin-top: 120px;
-            margin-left: 30px;
+            margin-top: 20px;
         }
+
+        @media screen and (max-width: 600px) {
+            .menu-icon {
+                display: block;
+                margin-left: 350px;
+            }
+
+            nav a {
+                display: none;
+            }
+
+            nav a.active {
+                display: block;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            header h1 {
+                font-size: 1.2em; /* Adjust the font size for smaller screens */
+                width: 430px;
+                justify-content:left;
+            }
+        }
+        
+        @media screen and (min-width: 601px) and (max-width: 900px) {
+            header h1 {
+                font-size: 1.8em; /* Adjust the font size for medium-sized screens */
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -53,25 +90,31 @@
     </header>
 
     <nav>
-        <div style="color: #fff; margin-left:100px;font-weight:bold;font-size:20px;">Computer Security and Cryptography</div>
-        <div style="color: #fff; margin-right:100px;font-weight:bold;font-size:20px;">
-            <a href="./Caesar Cipher/CaesarCipher.html">Ceaser Cipher</a>
-            <a href="https://vigenere-cipher-visualized.surge.sh/">Vigenere Cipher</a>
-            <a href="./Playfair/index.html">Playfair</a>
-            <a href="./Hill-Cipher/index.html">Hill Cipher</a>
-            <a href="./DES/index.html">DES</a>
-            <a href="./BlowFish/index.html">Blowfish</a>
-            <a href="./ECC/index.html">ECC</a>
-        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <a href="./Caesar Cipher/CaesarCipher.html">Ceaser Cipher</a>
+        <a href="https://vigenere-cipher-visualized.surge.sh/">Vigenere Cipher</a>
+        <a href="./Playfair/index.html">Playfair</a>
+        <a href="./Hill-Cipher/index.html">Hill Cipher</a>
+        <a href="./DES/index.html">DES</a>
+        <a href="./BlowFish/index.html">Blowfish</a>
+        <a href="./ECC/index.html">ECC</a>
     </nav>
 
     <div class="content">
         <img src="./WhatsApp Image 2023-12-21 at 14.41.26_11beeaa2.jpg" alt="Course Image" class="course-image">
-        <h2 style="margin-top: 340px; margin-left:60px;color:#EA1179">Computer Security and <br>Cryptography</h2><br>
-        <p style="margin-top: 340px;color:#241468;font-size:18px;margin-left:80px;">Dr. / Ali Elsherbeni Ahmed <br>Takieldeen</p>
-        <p style="margin-top: 340px;color:#241468;font-size:18px;margin-left:80px;">Eng / Doniya Mohamed <br>Abd-elhady</p>
-
+        <h2 style="margin-top: 20px;color:#EA1179">Computer Security and <br>Cryptography</h2><br>
+        <p style="margin-top: 20px;color:#241468;font-size:18px;">Dr. / Ali Elsherbeni Ahmed <br>Takieldeen</p>
+        <p style="margin-top: 20px;color:#241468;font-size:18px;">Eng / Doniya Mohamed <br>Abd-elhady</p>
     </div>
+
+    <script>
+        function toggleMenu() {
+            var navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(function(link) {
+                link.classList.toggle('active');
+            });
+        }
+    </script>
 
 </body>
 </html>
